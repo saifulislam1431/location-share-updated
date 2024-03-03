@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, StyleSheet, Text, ScrollView, Dimensions, TouchableOpacity, Image, Pressable, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, Text, ScrollView, Dimensions, TouchableOpacity, Image, Pressable, ActivityIndicator, Platform } from 'react-native';
 import MapViewDirections from 'react-native-maps-directions';
 import { GOOGLE_MAPS_APIKEY } from '../../../env';
 import imagePath from '../../constant/imagePath';
@@ -81,6 +81,10 @@ const Home = () => {
                     ref={mapRef}
                     style={styles.map}
                     loadingEnable={true}
+                    showsCompass={true}
+                    showsTraffic={true}
+                    zoomControlEnabled={true}
+                    mapType={Platform === "android" ? "standard" : "satellite"}
                     initialRegion={
                         pickUpCords
                     }
